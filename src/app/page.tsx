@@ -1,7 +1,3 @@
 export default function Home() {
-    return (
-        <main className="underline">
-            лежать плюс сосать
-        </main>
-    )
+    return <main className="underline">лежать плюс сосать</main>
 }
