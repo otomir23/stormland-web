@@ -66,12 +66,12 @@ export default async function Auth({
                 )}
                 <h1 className="text-lg font-bold">Авторизация</h1>
                 <Link href="/auth/msa" className="contents">
-                    <Button type="reset">
+                    <Button type="reset" intent="primary">
                         Войти через
                         <Image
                             src={microsoftIcon}
                             alt="Microsoft Logo"
-                            className="pointer-events-none ml-2 h-8 w-min"
+                            className="pointer-events-none -mr-1.5 h-8 w-min"
                         />
                         Microsoft
                     </Button>
