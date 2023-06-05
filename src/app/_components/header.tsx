@@ -1,5 +1,7 @@
 import HeaderLink from '@/app/_components/header-link'
-import { Download, Home, Map, User } from 'lucide-react'
+import { Download, Home, Map } from 'lucide-react'
+import HeaderUserLink from '@/app/_components/header-user-link'
+import { Suspense } from 'react'
 
 export default function Header() {
     return (
@@ -17,10 +19,13 @@ export default function Header() {
                     Скачать
                 </HeaderLink>
                 <div className="h-full flex-1" />
-                <HeaderLink href="/auth">
-                    <User height={16} />
-                    Войти
-                </HeaderLink>
+                <Suspense
+                    fallback={
+                        <div className="h-6 w-16 animate-pulse rounded-full bg-neutral-300" />
+                    }
+                >
+                    <HeaderUserLink />
+                </Suspense>
             </nav>
         </header>
     )
