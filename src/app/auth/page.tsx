@@ -61,7 +61,7 @@ export default async function Auth({
                 action={credentialsSignIn}
             >
                 {error && (
-                    <div className="flex items-center gap-4 rounded-lg border border-red-200 bg-red-100 px-4 py-2 text-sm text-red-600">
+                    <div className="flex items-center gap-4 rounded-lg border border-red-100 bg-red-50 px-4 py-2 text-sm text-red-600">
                         <AlertCircle height={16} className="min-w-fit" />
                         <p>{error}</p>
                     </div>
