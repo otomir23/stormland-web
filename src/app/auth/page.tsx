@@ -32,12 +32,12 @@ export default async function Auth({
             !validateFormDataEntry(username) ||
             !validateFormDataEntry(password)
         ) {
-            redirect('?error=missing_credentials')
+            redirect('/auth?error=missing_credentials')
             return
         }
         const uuid = await getOfflineUUIDWithCredentials(username, password)
         if (!uuid) {
-            redirect('?error=invalid_credentials')
+            redirect('/auth?error=invalid_credentials')
             return
         }
         const accessToken = await generateAccessToken(uuid)
