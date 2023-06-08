@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {
+    AUTH_COOKIE_NAME,
     authErrors,
     generateAccessToken,
     getOfflineUUIDWithCredentials,
@@ -39,7 +40,7 @@ export default async function Auth({
             return
         }
         const accessToken = await generateAccessToken(uuid)
-        cookies().set('token', accessToken)
+        cookies().set(AUTH_COOKIE_NAME, accessToken)
     }
 
     const errorId = searchParams['error']

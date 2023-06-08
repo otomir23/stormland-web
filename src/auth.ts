@@ -1,5 +1,8 @@
 import { jwtVerify, SignJWT } from 'jose'
+import { getEnvVariable } from '@/util'
+import { MSToken } from 'msmc/types/auth/auth'
 
+export const AUTH_COOKIE_NAME = 'token'
 const alg = 'HS256'
 
 /**
@@ -7,14 +10,11 @@ const alg = 'HS256'
  * @returns JWT secret for signing
  * @throws Will throw if there is no secret in production environment
  */
-function getJWTSecret() {
-    const secret = process.env.JWT_SECRET
-    if (!secret) {
-        if (process.env.NODE_ENV === 'production')
-            throw new Error('No JWT secret in production')
-        return new Uint8Array()
-    }
-    return new TextEncoder().encode(secret)
+function getJWTSecret(): Uint8Array {
+    return (
+        new TextEncoder().encode(getEnvVariable('JWT_SECRET')) ||
+        new Uint8Array()
+    )
 }
 
 /**
@@ -56,6 +56,19 @@ export async function getUUID(accessToken: string): Promise<string | null> {
 }
 
 /**
+ * Generates data for MSMC lib
+ * @param callbackURL URL that Microsoft will redirect to
+ * @returns MSToken object to work with auth
+ */
+export function getMicrosoftToken(callbackURL: string): MSToken {
+    return {
+        client_id: getEnvVariable('MSA_CLIENT_ID', true),
+        redirect: callbackURL,
+        clientSecret: getEnvVariable('MSA_CLIENT_SECRET', true),
+    }
+}
+
+/**
  * Map of auth error IDs as their human-readable descriptions.
  */
 export const authErrors = new Map([
@@ -65,6 +78,10 @@ export const authErrors = new Map([
     ],
     ['missing_credentials', 'Не заполнено одно или несколько полей.'],
     [
+        'msa_not_found',
+        'Аккаунт не владеет лицензией Minecraft, попробуйте войти по паролю.',
+    ],
+    [
         'msa_forbidden',
         'Аккаунт используется как пиратский на сервере, войдите по паролю.',
     ],
@@ -72,4 +89,5 @@ export const authErrors = new Map([
         'msa_not_whitelisted',
         'Аккаунт найден, но не в белом списке. Свяжитесь с администратором.',
     ],
+    ['unknown', 'Произошла неизвестная ошибка. Свяжитесь с администратором.'],
 ])
