@@ -16,6 +16,7 @@ import Button from '@/app/_components/button'
 import Input from '@/app/_components/input'
 import OfflineAuthFormWrapper from '@/app/auth/_components/offline-auth-form-wrapper'
 import { useUser } from '@/users'
+import Main from '@/app/_components/Main'
 
 export default async function Auth({
     searchParams,
@@ -54,7 +55,7 @@ export default async function Auth({
     }
 
     return (
-        <main className="px-16">
+        <Main>
             <OfflineAuthFormWrapper
                 className="mx-auto mt-8 flex w-full max-w-sm flex-col gap-4 rounded-2xl border border-neutral-100 p-8"
                 action={credentialsSignIn}
@@ -91,6 +92,6 @@ export default async function Auth({
                 />
                 <SubmitButton>Войти через пиратку</SubmitButton>
             </OfflineAuthFormWrapper>
-        </main>
+        </Main>
     )
 }

@@ -1,3 +1,5 @@
+import Main from '@/app/_components/Main'
+
 export default function Home() {
-    return <main className="px-16 underline">лежать плюс сосать</main>
+    return <Main>В разработке...</Main>
 }
