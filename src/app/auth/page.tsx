@@ -16,7 +16,7 @@ import Button from '@/app/_components/button'
 import Input from '@/app/_components/input'
 import OfflineAuthFormWrapper from '@/app/auth/_components/offline-auth-form-wrapper'
 import { useUser } from '@/users'
-import Main from '@/app/_components/Main'
+import Main from '@/app/_components/main'
 
 export default async function Auth({
     searchParams,
