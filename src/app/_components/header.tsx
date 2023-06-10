@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 
 export default function Header() {
     return (
-        <header className="sticky left-0 right-0 top-0 flex w-full gap-4 px-16 py-8 text-lg">
+        <header className="sticky left-0 right-0 top-0 flex w-full gap-4 bg-white bg-opacity-50 px-16 py-8 text-lg backdrop-blur-sm">
             <nav className="text-neut flex w-full flex-row gap-6 text-neutral-700">
                 <HeaderLink href="/">
                     <Home height={16} /> Главная
