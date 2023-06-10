@@ -3,6 +3,10 @@ import Main from '@/app/_components/main'
 import ErrorPage from '@/app/_components/error-page'
 import { MapPinOff } from 'lucide-react'
 
+export const metadata = {
+    title: 'Карта сервера',
+}
+
 export default function Map() {
     const mapSource = getEnvVariable('MAP_URL')
     if (!mapSource)

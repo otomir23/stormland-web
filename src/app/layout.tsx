@@ -6,7 +6,10 @@ import Header from '@/app/_components/header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-    title: 'Stormland',
+    title: {
+        template: '%s | Stormland',
+        default: 'Stormland',
+    },
     description: 'Тот самый секретный Minecraft сервер для друзей.',
 }
 

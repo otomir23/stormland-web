@@ -18,6 +18,10 @@ import OfflineAuthFormWrapper from '@/app/auth/_components/offline-auth-form-wra
 import { useUser } from '@/users'
 import Main from '@/app/_components/main'
 
+export const metadata = {
+    title: 'Войти в аккаунт',
+}
+
 export default async function Auth({
     searchParams,
 }: {
