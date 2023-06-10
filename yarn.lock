@@ -1711,10 +1711,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lucide-react@^0.234.0:
-  version "0.234.0"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.234.0.tgz#f7821fe2dbd52ed8597e53dbf5eb5fff7bb7f68d"
-  integrity sha512-7MtwK9zPXyvpHv9Tf0anraIjI9yRDdkfYIPt8KOC54NvimBAxbNpeIBb5/f+tZVIkN0hMgZdrAFugZe4YPZHcA==
+lucide-react@^0.241.0:
+  version "0.241.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.241.0.tgz#e5116bb66e64e8c1742bd063a96248f54b527a8e"
+  integrity sha512-g22ci6iHuNc2hUwjiFz0D3jQQfQYrZBZesXG6+AX5rOV68Epttkt/nF6dMdz6reKJjtpoNzu+LKeKHGu/qjOgQ==
 
 merge-stream@^2.0.0:
   version "2.0.0"
