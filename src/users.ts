@@ -18,6 +18,7 @@ export async function useUser(): Promise<User | null> {
 
 export async function getUserProfile(uuid: string): Promise<User | null> {
     // TODO placeholder
+    if (uuid !== '5392538a-0394-11ee-be56-0242ac120002') return null
     return {
         uuid,
         username: 'test',
