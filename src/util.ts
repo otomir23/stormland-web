@@ -1,3 +1,5 @@
+import { createHash } from 'crypto'
+
 export function validateFormDataEntry(
     value: FormDataEntryValue | null
 ): value is string {
@@ -27,4 +29,25 @@ export function getEnvVariable(
         return ''
     }
     return variable
+}
+
+/**
+ * Generates UUID mimicking JDK's UUID::nameUUIDFromBytes method
+ * @param name string to be used to construct a UUID
+ * @returns A UUID generated from the specified string
+ */
+export function namedJavaUUID(name: string) {
+    let md5Bytes = createHash('md5').update(name).digest()
+    md5Bytes[6] &= 0x0f // clear version
+    md5Bytes[6] |= 0x30 // set to version 3
+    md5Bytes[8] &= 0x3f // clear variant
+    md5Bytes[8] |= 0x80 // set to IETF variant
+    return normalizeUUID(md5Bytes.toString('hex'))
+}
+
+export function normalizeUUID(uuid: string) {
+    return uuid.replace(
+        /(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})/,
+        '$1-$2-$3-$4-$5'
+    )
 }

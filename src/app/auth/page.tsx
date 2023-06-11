@@ -15,7 +15,7 @@ import SubmitButton from '@/app/_components/submit-button'
 import Button from '@/app/_components/button'
 import Input from '@/app/_components/input'
 import OfflineAuthFormWrapper from '@/app/auth/_components/offline-auth-form-wrapper'
-import { useUser } from '@/users'
+import { getUserProfile, useUser } from '@/users'
 import Main from '@/app/_components/main'
 
 export const metadata = {
@@ -35,15 +35,18 @@ export default async function Auth({
         if (
             !validateFormDataEntry(username) ||
             !validateFormDataEntry(password)
-        ) {
+        )
             redirect('/auth?error=missing_credentials')
-            return
+        let uuid = null
+        try {
+            uuid = await getOfflineUUIDWithCredentials(username, password)
+        } catch (e) {
+            console.error(e)
+            redirect('/auth?error=unknown')
         }
-        const uuid = await getOfflineUUIDWithCredentials(username, password)
-        if (!uuid) {
-            redirect('/auth?error=invalid_credentials')
-            return
-        }
+        if (!uuid) redirect('/auth?error=invalid_credentials')
+        if (!(await getUserProfile(uuid)))
+            redirect('/auth?error=not_whitelisted')
         const accessToken = await generateAccessToken(uuid)
         cookies().set(AUTH_COOKIE_NAME, accessToken)
     }

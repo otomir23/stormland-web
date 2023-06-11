@@ -26,5 +26,13 @@ export default async function Profile({ params: { uuid } }: Props) {
     const profile = await getUserProfile(uuid)
     if (!profile) notFound()
 
-    return <Main>{profile.username}</Main>
+    return (
+        <Main>
+            <h1 className="tesxt-lg font-bold">{profile.username}</h1>
+            <img
+                src={`http://skinsystem.ely.by/skins/${profile.username}.png`}
+            />
+            <p>Subscription until: {profile.until.toDateString()}</p>
+        </Main>
+    )
 }

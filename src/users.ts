@@ -1,12 +1,10 @@
 import { cookies } from 'next/headers'
 import { getUUID } from '@/auth'
+import { prisma } from '@/db'
+import { Profile } from '@prisma/client'
+import { cache } from 'react'
 
-export type User = {
-    uuid: string
-    username: string
-}
-
-export async function useUser(): Promise<User | null> {
+export async function useUser(): Promise<Profile | null> {
     const accessToken = cookies().get('token')
     if (!accessToken) return null
 
@@ -16,11 +14,12 @@ export async function useUser(): Promise<User | null> {
     return await getUserProfile(uuid)
 }
 
-export async function getUserProfile(uuid: string): Promise<User | null> {
-    // TODO placeholder
-    if (uuid !== '5392538a-0394-11ee-be56-0242ac120002') return null
-    return {
-        uuid,
-        username: 'test',
+export const getUserProfile = cache(
+    async (uuid: string): Promise<Profile | null> => {
+        return prisma.profile.findFirst({
+            where: {
+                uuid,
+            },
+        })
     }
-}
+)

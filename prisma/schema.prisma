@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model OfflineAuth {
+  id   Int    @id @default(autoincrement())
+  uuid String @unique @db.VarChar(36)
+  data Json
+
+  @@map("offline_auth")
+}
+
+model Profile {
+  id       Int      @id @default(autoincrement())
+  uuid     String   @unique @db.VarChar(36)
+  username String   @unique
+  until    DateTime @default(now())
+
+  @@map("profile")
+}

@@ -1,6 +1,8 @@
 import { jwtVerify, SignJWT } from 'jose'
-import { getEnvVariable } from '@/util'
+import { getEnvVariable, namedJavaUUID } from '@/util'
 import { MSToken } from 'msmc/types/auth/auth'
+import { prisma } from '@/db'
+import { verify } from 'argon2'
 
 export const AUTH_COOKIE_NAME = 'token'
 const alg = 'HS256'
@@ -25,10 +27,26 @@ export async function getOfflineUUIDWithCredentials(
     username: string,
     password: string
 ): Promise<string | null> {
-    // TODO placeholder
-    return username === 'test' && password === 'stormcraft228'
-        ? '5392538a-0394-11ee-be56-0242ac120002'
-        : null
+    const uuid = namedJavaUUID(`OfflinePlayer:${username}`)
+    const offlineAuthData = await prisma.offlineAuth.findFirst({
+        where: {
+            uuid,
+        },
+    })
+    if (!offlineAuthData) return null
+    const { data } = offlineAuthData
+    if (
+        !data ||
+        typeof data !== 'object' ||
+        Array.isArray(data) ||
+        !data.password ||
+        typeof data.password !== 'string'
+    )
+        throw 'Offline Auth Data JSON is not valid: ' + JSON.stringify(data)
+
+    if (!(await verify(data.password, password))) return null
+
+    return uuid
 }
 
 /**
@@ -82,12 +100,8 @@ export const authErrors = new Map([
         'Аккаунт не владеет лицензией Minecraft, попробуйте войти по паролю.',
     ],
     [
-        'msa_forbidden',
-        'Аккаунт используется как пиратский на сервере, войдите по паролю.',
-    ],
-    [
-        'msa_not_whitelisted',
-        'Аккаунт найден, но не в белом списке. Свяжитесь с администратором.',
+        'not_whitelisted',
+        'Аккаунт найден, но не в белом списке. Свяжитесь с администратором',
     ],
     ['unknown', 'Произошла неизвестная ошибка. Свяжитесь с администратором.'],
 ])
