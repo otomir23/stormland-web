@@ -20,6 +20,7 @@ model Profile {
   uuid     String   @unique @db.VarChar(36)
   username String   @unique
   until    DateTime @default(now())
+  online   Boolean  @default(false)
 
   @@map("profile")
 }
