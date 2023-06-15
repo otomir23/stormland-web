@@ -1,5 +1,5 @@
 import Main from '@/app/_components/main'
-import { getUserProfile, useUser } from '@/users'
+import { getUserProfile, subsEnabled, useUser } from '@/users'
 import SkinRenderer from '@/app/profile/_components/skin-renderer'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
@@ -57,24 +57,28 @@ export default async function Profile({ params: { uuid } }: Props) {
                         <Calendar size={16} /> Подписка:
                     </span>
                     <span className="text-neutral-800">
-                        {profile.until > new Date()
-                            ? 'Активна до ' +
-                              profile.until.toLocaleDateString('ru-RU', {
-                                  day: 'numeric',
-                                  month: 'long',
-                                  year: 'numeric',
-                              })
-                            : 'просрочена'}
+                        {subsEnabled
+                            ? profile.until > new Date()
+                                ? 'Активна до ' +
+                                  profile.until.toLocaleDateString('ru-RU', {
+                                      day: 'numeric',
+                                      month: 'long',
+                                      year: 'numeric',
+                                  })
+                                : 'просрочена'
+                            : 'бесплатная'}
                     </span>
                     <div className="hidden flex-1 lg:block" />
-                    <Link
-                        href={`/profile/${profile.uuid}/sub`}
-                        className="text-red-500"
-                    >
-                        {self?.uuid === profile.uuid
-                            ? 'Продлить подписку -->'
-                            : 'Подарить подписку -->'}
-                    </Link>
+                    {subsEnabled && (
+                        <Link
+                            href={`/profile/${profile.uuid}/sub`}
+                            className="text-red-500"
+                        >
+                            {self?.uuid === profile.uuid
+                                ? 'Продлить подписку -->'
+                                : 'Подарить подписку -->'}
+                        </Link>
+                    )}
                 </div>
             </section>
         </Main>

@@ -3,6 +3,7 @@ import { getUUID } from '@/auth'
 import { prisma } from '@/db'
 import { Profile } from '@prisma/client'
 import { cache } from 'react'
+import { getEnvVariable } from '@/util'
 
 export async function useUser(): Promise<Profile | null> {
     const accessToken = cookies().get('token')
@@ -23,3 +24,7 @@ export const getUserProfile = cache(
         })
     }
 )
+
+export const subsEnabled =
+    (getEnvVariable('SUBSCRIPTIONS_ENABLED') || 'false').toLowerCase() ===
+    'true'
