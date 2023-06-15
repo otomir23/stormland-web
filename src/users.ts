@@ -29,6 +29,15 @@ export const getAllProfiles = cache(
     (): Promise<Profile[]> => prisma.profile.findMany()
 )
 
+export const getOnlineProfiles = cache(
+    (): Promise<Profile[]> =>
+        prisma.profile.findMany({
+            where: {
+                online: true,
+            },
+        })
+)
+
 export const subsEnabled =
     (getEnvVariable('SUBSCRIPTIONS_ENABLED') || 'false').toLowerCase() ===
     'true'
