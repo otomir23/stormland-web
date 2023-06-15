@@ -2,6 +2,8 @@ import { getEnvVariable } from '@/util'
 import Main from '@/app/_components/main'
 import ErrorPage from '@/app/_components/error-page'
 import { MapPinOff } from 'lucide-react'
+import { Suspense } from 'react'
+import Profiles from '@/app/map/_components/profiles'
 
 export const metadata = {
     title: 'Карта сервера',
@@ -18,6 +20,7 @@ export default function Map() {
                 advancedDescription="Отсутствует переменная окружения MAP_URL."
             />
         )
+
     return (
         <Main>
             <iframe
@@ -26,6 +29,9 @@ export default function Map() {
             >
                 Ору чё у тебя за говно браузер
             </iframe>
+            <Suspense fallback={null}>
+                <Profiles />
+            </Suspense>
         </Main>
     )
 }
