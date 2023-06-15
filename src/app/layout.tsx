@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 import Header from '@/app/_components/header'
+import Footer from '@/app/_components/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: PropsWithChildren<{}>) {
             <body className={inter.className}>
                 <Header />
                 {children}
+                <Footer />
             </body>
         </html>
     )
