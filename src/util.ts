@@ -51,3 +51,12 @@ export function normalizeUUID(uuid: string) {
         '$1-$2-$3-$4-$5'
     )
 }
+
+export function shuffle<T>(src: T[]): T[] {
+    const array: T[] = src.map((e) => e)
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+        ;[array[i], array[j]] = [array[j], array[i]]
+    }
+    return array
+}
