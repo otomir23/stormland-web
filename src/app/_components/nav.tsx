@@ -15,7 +15,7 @@ export default function Nav({ children }: PropsWithChildren<{}>) {
             <nav
                 className={`fixed inset-0 h-screen w-full flex-col gap-6 p-8 text-neutral-700 md:static md:flex md:h-auto md:flex-row md:p-0 ${
                     open ? 'flex' : 'hidden'
-                } z-10 bg-white bg-opacity-75 backdrop-blur-3xl md:bg-opacity-0 md:backdrop-blur-0`}
+                } z-10 bg-white bg-opacity-90 backdrop-blur-3xl md:bg-opacity-0 md:backdrop-blur-0`}
                 onClick={() => {
                     setOpen(false)
                 }}

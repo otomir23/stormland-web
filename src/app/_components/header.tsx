@@ -19,7 +19,7 @@ export default function Header() {
                     <Download height={16} />
                     Скачать
                 </HeaderLink>
-                <div className="flex-1" />
+                <div className="md:flex-1" />
                 <Suspense
                     fallback={
                         <div className="h-6 w-16 animate-pulse rounded-full bg-neutral-300" />
