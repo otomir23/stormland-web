@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 export default async function Profiles() {
     const profiles = await getAllProfiles()
+    if (profiles.length === 0) return null
     return (
         <>
             <h2 className="mt-8 text-2xl font-bold">Игроки</h2>
