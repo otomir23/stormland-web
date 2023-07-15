@@ -64,7 +64,7 @@ export default async function Auth({
     return (
         <Main>
             <OfflineAuthFormWrapper
-                className="mx-auto mt-8 flex w-full max-w-sm flex-col gap-4 rounded-2xl border border-neutral-100 p-8"
+                className="absolute inset-x-0 mx-auto flex w-full max-w-sm flex-col gap-4 rounded-2xl border-neutral-100 p-8 sm:static sm:mt-8 sm:border"
                 action={credentialsSignIn}
             >
                 {error && (
