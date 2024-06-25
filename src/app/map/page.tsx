@@ -26,23 +26,21 @@ export default function Map() {
         <Main>
             <iframe
                 className="min-h-screen w-full rounded-lg border border-neutral-300"
-                src="/map/embed"
+                src={mapSource}
             >
                 Ору чё у тебя за говно браузер
             </iframe>
             <div className="mt-2 flex items-center gap-2 text-neutral-600">
                 <Info size={16} />
                 <p>
-                    Если у вас некорректно отображается карта, вы можете открыть
-                    её{" "}
+                    Если у вас некорректно отображается карта, вы можете открыть её{" "}
                     <Link
                         className="text-red-500"
                         href={mapSource}
                         target="_blank"
                     >
                         отдельной страницей
-                    </Link>
-                    .
+                    </Link>.
                 </p>
             </div>
             <Suspense fallback={null}>
