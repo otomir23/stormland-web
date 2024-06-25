@@ -24,8 +24,8 @@ importers:
         specifier: ^4.15.7
         version: 4.15.7
       lucide-react:
-        specifier: ^0.241.0
-        version: 0.241.0(react@19.0.0-rc-8971381549-20240625)
+        specifier: ^0.396.0
+        version: 0.396.0(react@19.0.0-rc-8971381549-20240625)
       msmc:
         specifier: ^4.1.0
         version: 4.1.0(encoding@0.1.13)
@@ -1355,8 +1355,8 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  lucide-react@0.241.0:
-    resolution: {integrity: sha512-g22ci6iHuNc2hUwjiFz0D3jQQfQYrZBZesXG6+AX5rOV68Epttkt/nF6dMdz6reKJjtpoNzu+LKeKHGu/qjOgQ==}
+  lucide-react@0.396.0:
+    resolution: {integrity: sha512-N/zP+9vEfEYHiMWMpjwH/M5diaV0e4UFe07BpgdzaRYce5QvXi87hixf7F0Xqdr3zuX/9u7H/2D4MVXIK22O0A==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
 
@@ -3451,7 +3451,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lucide-react@0.241.0(react@19.0.0-rc-8971381549-20240625):
+  lucide-react@0.396.0(react@19.0.0-rc-8971381549-20240625):
     dependencies:
       react: 19.0.0-rc-8971381549-20240625
 
