@@ -13,9 +13,8 @@ export default function Nav({ children }: PropsWithChildren) {
                 className="text-neutral-700 md:hidden"
             />
             <nav
-                className={`fixed inset-0 h-screen w-full flex-col gap-6 p-8 text-neutral-700 md:static md:flex \
-                md:h-automd:flex-row md:p-0 ${open ? "flex" : "hidden"} z-50 bg-white bg-opacity-90 backdrop-blur-3xl \
-                md:bg-opacity-0 md:backdrop-blur-0`}
+                className={`fixed inset-0 h-screen w-full flex-col gap-6 p-8 text-neutral-700 md:static md:flex md:p-0 \
+                md:h-auto md:flex-row z-50 max-md:bg-white/90 max-md:backdrop-blur-3xl ${open ? "flex" : "hidden"}`}
                 onClick={() => {
                     setOpen(false)
                 }}
