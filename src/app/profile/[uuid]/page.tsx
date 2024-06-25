@@ -1,13 +1,13 @@
-import Main from '@/app/_components/main'
-import { getUserProfile, subsEnabled, useUser } from '@/users'
-import SkinRenderer from '@/app/profile/_components/skin-renderer'
-import { notFound } from 'next/navigation'
-import { Metadata } from 'next'
-import { Calendar } from 'lucide-react'
-import Link from 'next/link'
+import Main from "@/app/_components/main"
+import { getUserProfile, subsEnabled, useUser } from "@/users"
+import SkinRenderer from "@/app/profile/_components/skin-renderer"
+import { notFound } from "next/navigation"
+import { Metadata } from "next"
+import { Calendar } from "lucide-react"
+import Link from "next/link"
 
 type Props = {
-    params: { uuid: string }
+    params: { uuid: string },
 }
 
 export async function generateMetadata({
@@ -20,7 +20,7 @@ export async function generateMetadata({
         title: profile.username,
         description: `${profile.username} играет на Stormland, приватном Minecraft сервере для друзей.`,
         openGraph: {
-            type: 'profile',
+            type: "profile",
         },
     }
 }
@@ -44,7 +44,7 @@ export default async function Profile({ params: { uuid } }: Props) {
                     <h1 className="text-2xl font-bold">{profile.username}</h1>
                     {profile.online ? (
                         <p className="text-lg font-bold text-red-500">
-                            В игре --{'>'}
+                            В игре --{">"}
                         </p>
                     ) : (
                         <p className="text-lg font-bold text-neutral-600">
@@ -52,21 +52,24 @@ export default async function Profile({ params: { uuid } }: Props) {
                         </p>
                     )}
                 </div>
-                <div className="flex flex-wrap items-center gap-x-2 rounded-lg border border-neutral-300 px-6 py-4 text-lg">
+                <div
+                    className="flex flex-wrap items-center gap-x-2 rounded-lg border border-neutral-300 px-6 py-4
+                    text-lg"
+                >
                     <span className="contents text-neutral-700">
                         <Calendar size={16} /> Подписка:
                     </span>
                     <span className="text-neutral-800">
                         {subsEnabled
                             ? profile.until > new Date()
-                                ? 'Активна до ' +
-                                  profile.until.toLocaleDateString('ru-RU', {
-                                      day: 'numeric',
-                                      month: 'long',
-                                      year: 'numeric',
-                                  })
-                                : 'просрочена'
-                            : 'бесплатная'}
+                                ? "Активна до "
+                                + profile.until.toLocaleDateString("ru-RU", {
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric",
+                                })
+                                : "просрочена"
+                            : "бесплатная"}
                     </span>
                     <div className="hidden flex-1 lg:block" />
                     {subsEnabled && (
@@ -75,8 +78,8 @@ export default async function Profile({ params: { uuid } }: Props) {
                             className="text-red-500"
                         >
                             {self?.uuid === profile.uuid
-                                ? 'Продлить подписку -->'
-                                : 'Подарить подписку -->'}
+                                ? "Продлить подписку -->"
+                                : "Подарить подписку -->"}
                         </Link>
                     )}
                 </div>

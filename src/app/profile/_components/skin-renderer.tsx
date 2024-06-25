@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import ReactSkinview3d, { ReactSkinview3dOptions } from 'react-skinview3d'
-import { SkinViewer, WalkingAnimation } from 'skinview3d'
-import { useMemo } from 'react'
+import ReactSkinview3d, { ReactSkinview3dOptions } from "react-skinview3d"
+import { SkinViewer, WalkingAnimation } from "skinview3d"
+import { useMemo } from "react"
 
 export default function SkinRenderer(
-    props: Omit<ReactSkinview3dOptions, 'width' | 'height'>
+    props: Omit<ReactSkinview3dOptions, "width" | "height">
 ) {
     const anim = useMemo(() => {
         const anim = new WalkingAnimation()
@@ -16,7 +16,7 @@ export default function SkinRenderer(
 
     const resize = (v: SkinViewer) => {
         const c = v.canvas
-        c.removeAttribute('style')
+        c.removeAttribute("style")
         c.width = c.clientWidth
         c.height = c.clientHeight
         v.setSize(c.clientWidth, c.clientHeight)

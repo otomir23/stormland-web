@@ -1,8 +1,8 @@
-import ErrorPage from '@/app/_components/error-page'
-import { SearchX } from 'lucide-react'
+import ErrorPage from "@/app/_components/error-page"
+import { SearchX } from "lucide-react"
 
 export const metadata = {
-    title: 'Страница не найдена',
+    title: "Страница не найдена",
 }
 
 export default function NotFound() {

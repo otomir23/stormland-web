@@ -1,9 +1,9 @@
-import Main from '@/app/_components/main'
-import { Suspense } from 'react'
-import OnlinePlayers from '@/app/_components/online-players'
-import Image from 'next/image'
-import logo from '@/app/logo.png'
-import Gallery from '@/app/_components/gallery'
+import Main from "@/app/_components/main"
+import { Suspense } from "react"
+import OnlinePlayers from "@/app/_components/online-players"
+import Image from "next/image"
+import logo from "@/app/logo.png"
+import Gallery from "@/app/_components/gallery"
 
 export default function Home() {
     return (

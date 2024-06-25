@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 export default function TelegramIcon() {
     return (
         <svg viewBox="0 0 1000 1000" height="100%">

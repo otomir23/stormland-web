@@ -1,16 +1,16 @@
-import { shuffle } from '@/util'
-import Image from 'next/image'
-import path from 'path'
-import { readdir } from 'fs/promises'
+import { shuffle } from "@/util"
+import Image from "next/image"
+import path from "path"
+import { readdir } from "fs/promises"
 
 export default async function Gallery({
-    className = '',
+    className = "",
     count = 6,
 }: {
-    className?: string
-    count?: number
+    className?: string,
+    count?: number,
 }) {
-    const galleryPath = path.join(process.cwd(), 'public', 'gallery')
+    const galleryPath = path.join(process.cwd(), "public", "gallery")
     const imageNames = await readdir(galleryPath)
 
     const gallery = shuffle(imageNames).slice(0, count)
@@ -20,7 +20,7 @@ export default async function Gallery({
         >
             {gallery.map((img, i) => (
                 <Image
-                    src={'/gallery/' + img}
+                    src={"/gallery/" + img}
                     alt={img}
                     key={i}
                     width={1024}
@@ -28,8 +28,8 @@ export default async function Gallery({
                     quality={100}
                     className={`${
                         i % 6 === 4 || i % 6 === 0
-                            ? 'col-span-2 row-span-2'
-                            : ''
+                            ? "col-span-2 row-span-2"
+                            : ""
                     } aspect-square rounded-lg object-cover`}
                 />
             ))}

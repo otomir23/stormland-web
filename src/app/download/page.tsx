@@ -1,13 +1,13 @@
-import { getEnvVariable } from '@/util'
-import ErrorPage from '@/app/_components/error-page'
-import { redirect } from 'next/navigation'
+import { getEnvVariable } from "@/util"
+import ErrorPage from "@/app/_components/error-page"
+import { redirect } from "next/navigation"
 
 export const metadata = {
-    title: 'Скачать модпак',
+    title: "Скачать модпак",
 }
 
 export default function Map() {
-    const downloadLink = getEnvVariable('DOWNLOAD_URL')
+    const downloadLink = getEnvVariable("DOWNLOAD_URL")
     if (!downloadLink)
         return (
             <ErrorPage

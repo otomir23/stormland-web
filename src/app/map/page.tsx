@@ -1,17 +1,17 @@
-import { getEnvVariable } from '@/util'
-import Main from '@/app/_components/main'
-import ErrorPage from '@/app/_components/error-page'
-import { Info, MapPinOff } from 'lucide-react'
-import { Suspense } from 'react'
-import Profiles from '@/app/map/_components/profiles'
-import Link from 'next/link'
+import { getEnvVariable } from "@/util"
+import Main from "@/app/_components/main"
+import ErrorPage from "@/app/_components/error-page"
+import { Info, MapPinOff } from "lucide-react"
+import { Suspense } from "react"
+import Profiles from "@/app/map/_components/profiles"
+import Link from "next/link"
 
 export const metadata = {
-    title: 'Карта сервера',
+    title: "Карта сервера",
 }
 
 export default function Map() {
-    const mapSource = getEnvVariable('MAP_URL')
+    const mapSource = getEnvVariable("MAP_URL")
     if (!mapSource)
         return (
             <ErrorPage
@@ -26,7 +26,7 @@ export default function Map() {
         <Main>
             <iframe
                 className="min-h-screen w-full rounded-lg border border-neutral-300"
-                src={'/map/embed'}
+                src="/map/embed"
             >
                 Ору чё у тебя за говно браузер
             </iframe>
@@ -34,7 +34,7 @@ export default function Map() {
                 <Info size={16} />
                 <p>
                     Если у вас некорректно отображается карта, вы можете открыть
-                    её{' '}
+                    её{" "}
                     <Link
                         className="text-red-500"
                         href={mapSource}

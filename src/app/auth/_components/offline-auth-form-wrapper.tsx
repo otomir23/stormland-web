@@ -1,13 +1,13 @@
-'use client'
+"use client"
 
-import { ComponentProps } from 'react'
-import { useRouter } from 'next/navigation'
+import { ComponentProps } from "react"
+import { useRouter } from "next/navigation"
 
 export default function OfflineAuthFormWrapper({
     action,
     ...props
-}: ComponentProps<'form'> & {
-    action: (formData: FormData) => void
+}: ComponentProps<"form"> & {
+    action: (formData: FormData) => void,
 }) {
     const router = useRouter()
 

@@ -1,11 +1,11 @@
-import { jwtVerify, SignJWT } from 'jose'
-import { getEnvVariable, namedJavaUUID } from '@/util'
-import { MSToken } from 'msmc/types/auth/auth'
-import { prisma } from '@/db'
-import { verify } from 'argon2'
+import { jwtVerify, SignJWT } from "jose"
+import { getEnvVariable, namedJavaUUID } from "@/util"
+import { MSToken } from "msmc/types/auth/auth"
+import { prisma } from "@/db"
+import { verify } from "argon2"
 
-export const AUTH_COOKIE_NAME = 'token'
-const alg = 'HS256'
+export const AUTH_COOKIE_NAME = "token"
+const alg = "HS256"
 
 /**
  * Gets JWT secret env variable
@@ -14,8 +14,8 @@ const alg = 'HS256'
  */
 function getJWTSecret(): Uint8Array {
     return (
-        new TextEncoder().encode(getEnvVariable('JWT_SECRET')) ||
-        new Uint8Array()
+        new TextEncoder().encode(getEnvVariable("JWT_SECRET"))
+            || new Uint8Array()
     )
 }
 
@@ -36,13 +36,13 @@ export async function getOfflineUUIDWithCredentials(
     if (!offlineAuthData) return null
     const { data } = offlineAuthData
     if (
-        !data ||
-        typeof data !== 'object' ||
-        Array.isArray(data) ||
-        !data.password ||
-        typeof data.password !== 'string'
+        !data
+        || typeof data !== "object"
+        || Array.isArray(data)
+        || !data.password
+        || typeof data.password !== "string"
     )
-        throw 'Offline Auth Data JSON is not valid: ' + JSON.stringify(data)
+        throw "Offline Auth Data JSON is not valid: " + JSON.stringify(data)
 
     if (!(await verify(data.password, password))) return null
 
@@ -58,7 +58,7 @@ export async function generateAccessToken(uuid: string): Promise<string> {
     return await new SignJWT({ uuid })
         .setProtectedHeader({ alg })
         .setIssuedAt()
-        .setExpirationTime('7d')
+        .setExpirationTime("7d")
         .sign(getJWTSecret())
 }
 
@@ -69,7 +69,7 @@ export async function generateAccessToken(uuid: string): Promise<string> {
  */
 export async function getUUID(accessToken: string): Promise<string | null> {
     const { payload } = await jwtVerify(accessToken, getJWTSecret())
-    if (!payload.uuid || typeof payload.uuid !== 'string') return null
+    if (!payload.uuid || typeof payload.uuid !== "string") return null
     return payload.uuid
 }
 
@@ -80,9 +80,9 @@ export async function getUUID(accessToken: string): Promise<string | null> {
  */
 export function getMicrosoftToken(callbackURL: string): MSToken {
     return {
-        client_id: getEnvVariable('MSA_CLIENT_ID', true),
+        client_id: getEnvVariable("MSA_CLIENT_ID", true),
         redirect: callbackURL,
-        clientSecret: getEnvVariable('MSA_CLIENT_SECRET', true),
+        clientSecret: getEnvVariable("MSA_CLIENT_SECRET", true),
     }
 }
 
@@ -91,17 +91,17 @@ export function getMicrosoftToken(callbackURL: string): MSToken {
  */
 export const authErrors = new Map([
     [
-        'invalid_credentials',
-        'Введён неправильный пароль или аккаунт не зарегистрирован как пиратский на сервере.',
+        "invalid_credentials",
+        "Введён неправильный пароль или аккаунт не зарегистрирован как пиратский на сервере.",
     ],
-    ['missing_credentials', 'Не заполнено одно или несколько полей.'],
+    ["missing_credentials", "Не заполнено одно или несколько полей."],
     [
-        'msa_not_found',
-        'Аккаунт не владеет лицензией Minecraft, попробуйте войти по паролю.',
+        "msa_not_found",
+        "Аккаунт не владеет лицензией Minecraft, попробуйте войти по паролю.",
     ],
     [
-        'not_whitelisted',
-        'Аккаунт найден, но не в белом списке. Свяжитесь с администратором',
+        "not_whitelisted",
+        "Аккаунт найден, но не в белом списке. Свяжитесь с администратором",
     ],
-    ['unknown', 'Произошла неизвестная ошибка. Свяжитесь с администратором.'],
+    ["unknown", "Произошла неизвестная ошибка. Свяжитесь с администратором."],
 ])

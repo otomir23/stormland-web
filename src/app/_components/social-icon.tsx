@@ -1,15 +1,15 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren } from "react"
 
 export default async function SocialIcon({
     name,
     className,
     children,
 }: PropsWithChildren<{
-    name: string
-    className?: string
-}>): Promise<any> {
+    name: string,
+    className?: string,
+}>) {
     const Icon = await import(`@/app/_icons/${name}`).then(
-        (m) => m.default,
+        m => m.default,
         () => null
     )
 

@@ -1,12 +1,12 @@
-import { cookies } from 'next/headers'
-import { getUUID } from '@/auth'
-import { prisma } from '@/db'
-import { Profile } from '@prisma/client'
-import { cache } from 'react'
-import { getEnvVariable } from '@/util'
+import { cookies } from "next/headers"
+import { getUUID } from "@/auth"
+import { prisma } from "@/db"
+import { Profile } from "@prisma/client"
+import { cache } from "react"
+import { getEnvVariable } from "@/util"
 
 export async function useUser(): Promise<Profile | null> {
-    const accessToken = cookies().get('token')
+    const accessToken = cookies().get("token")
     if (!accessToken) return null
 
     const uuid = await getUUID(accessToken.value)
@@ -38,6 +38,6 @@ export const getOnlineProfiles = cache(
         })
 )
 
-export const subsEnabled =
-    (getEnvVariable('SUBSCRIPTIONS_ENABLED') || 'false').toLowerCase() ===
-    'true'
+export const subsEnabled
+    = (getEnvVariable("SUBSCRIPTIONS_ENABLED") || "false").toLowerCase()
+    === "true"

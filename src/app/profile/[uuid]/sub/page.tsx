@@ -1,7 +1,9 @@
-import { subsEnabled } from '@/users'
-import { notFound } from 'next/navigation'
-import ErrorPage from '@/app/_components/error-page'
-import { CalendarX2 } from 'lucide-react'
+/* eslint-disable @stylistic/max-len */
+
+import { subsEnabled } from "@/users"
+import { notFound } from "next/navigation"
+import ErrorPage from "@/app/_components/error-page"
+import { CalendarX2 } from "lucide-react"
 
 export default function Sub() {
     if (!subsEnabled) notFound()

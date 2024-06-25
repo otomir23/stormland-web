@@ -1,10 +1,10 @@
-import socials from '@/socials'
-import Link from 'next/link'
-import { getEnvVariable } from '@/util'
-import SocialIcon from '@/app/_components/social-icon'
+import socials from "@/socials"
+import Link from "next/link"
+import { getEnvVariable } from "@/util"
+import SocialIcon from "@/app/_components/social-icon"
 
 export default function Footer() {
-    const mcUrl = getEnvVariable('MINECRAFT_URL')
+    const mcUrl = getEnvVariable("MINECRAFT_URL")
 
     return (
         <footer className="flex w-full items-center justify-between gap-2 px-8 py-8 md:px-12 lg:px-16">

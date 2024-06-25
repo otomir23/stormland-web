@@ -1,5 +1,5 @@
-import { AlertCircle, LucideIcon } from 'lucide-react'
-import Main from '@/app/_components/main'
+import { AlertCircle, LucideIcon } from "lucide-react"
+import Main from "@/app/_components/main"
 
 export default function ErrorPage({
     icon: Icon = AlertCircle,
@@ -7,10 +7,10 @@ export default function ErrorPage({
     description,
     advancedDescription,
 }: {
-    icon?: LucideIcon
-    title: string
-    description?: string
-    advancedDescription?: string
+    icon?: LucideIcon,
+    title: string,
+    description?: string,
+    advancedDescription?: string,
 }) {
     return (
         <Main className="flex min-h-screen flex-col items-center justify-center">

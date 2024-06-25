@@ -8,8 +8,8 @@ export async function GET(
 ) {
     const mapSource = getEnvVariable('MAP_URL')
     if (!mapSource) notFound()
-    const target =
-        path.length === 1 && path[0] === 'embed' ? '' : path.join('/')
+    const target
+        = path.length === 1 && path[0] === 'embed' ? '' : path.join('/')
     try {
         const res = await fetch(mapSource + '/' + target)
         if (res.ok) {
@@ -21,13 +21,15 @@ export async function GET(
                 statusText: res.statusText,
             })
         }
-    } catch {}
+    } catch { /* noop */
+    }
     if (target === '')
         return new NextResponse(
-            `Не удалось создать прокси карты, попробуйте перейти на неё <a href='${mapSource}' target='_blank'>напрямую</a>`,
+            `Не удалось создать прокси карты, попробуйте перейти на неё \
+            <a href='${mapSource}' target='_blank'>напрямую</a>`,
             {
                 headers: {
-                    'Content-Type': 'text/html; charset=utf-8',
+                    'Content-Type': 'text/html; charset=utf-8'
                 },
                 status: 500,
             }
