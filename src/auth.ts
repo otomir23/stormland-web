@@ -68,8 +68,8 @@ export async function generateAccessToken(uuid: string): Promise<string> {
  * @returns UUID or null if token verification failed
  */
 export async function getUUID(accessToken: string): Promise<string | null> {
-    const { payload } = await jwtVerify(accessToken, getJWTSecret())
-    if (!payload.uuid || typeof payload.uuid !== "string") return null
+    const { payload } = await jwtVerify(accessToken, getJWTSecret()).catch(() => ({ payload: null }))
+    if (!payload || !payload.uuid || typeof payload.uuid !== "string") return null
     return payload.uuid
 }
 
