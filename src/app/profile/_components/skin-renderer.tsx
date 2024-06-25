@@ -23,6 +23,7 @@ export default function SkinRenderer(
     }
 
     return (
+        // @ts-expect-error Some React 19 type mismatches
         <ReactSkinview3d
             {...props}
             width={0}

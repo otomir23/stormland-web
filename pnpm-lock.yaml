@@ -39,8 +39,8 @@ importers:
         specifier: 19.0.0-rc-8971381549-20240625
         version: 19.0.0-rc-8971381549-20240625(react@19.0.0-rc-8971381549-20240625)
       react-skinview3d:
-        specifier: ^5.0.1
-        version: 5.0.1(react-dom@19.0.0-rc-8971381549-20240625(react@19.0.0-rc-8971381549-20240625))(react@19.0.0-rc-8971381549-20240625)
+        specifier: ^5.1.0
+        version: 5.1.0(react-dom@19.0.0-rc-8971381549-20240625(react@19.0.0-rc-8971381549-20240625))(react@19.0.0-rc-8971381549-20240625)
       skinview3d:
         specifier: ^3.0.1
         version: 3.0.1
@@ -1678,9 +1678,9 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react-skinview3d@5.0.1:
-    resolution: {integrity: sha512-MLF1wZsalGxvIjOm17BJQtVYoS1et4i5gJ0dwrXzl+oD8wIpiS1W/l0RoYQkvepAowI6glvA56Sqn99l0S4ZDg==}
-    engines: {node: '>=16', yarn: '>=1'}
+  react-skinview3d@5.1.0:
+    resolution: {integrity: sha512-FWNJ+/73tWotPxAsIRLREot1IPJ4uVZ7ExxPSGiByRDjWLVB/YiQ2gbuDARWEalZGHw6fDnJxfQ7ZTzurGVuag==}
+    engines: {node: '>=16'}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -3748,7 +3748,7 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-skinview3d@5.0.1(react-dom@19.0.0-rc-8971381549-20240625(react@19.0.0-rc-8971381549-20240625))(react@19.0.0-rc-8971381549-20240625):
+  react-skinview3d@5.1.0(react-dom@19.0.0-rc-8971381549-20240625(react@19.0.0-rc-8971381549-20240625))(react@19.0.0-rc-8971381549-20240625):
     dependencies:
       react: 19.0.0-rc-8971381549-20240625
       react-dom: 19.0.0-rc-8971381549-20240625(react@19.0.0-rc-8971381549-20240625)
